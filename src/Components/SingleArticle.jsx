@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById } from "../Utils/api";
+import { getArticleById, getCommentsByArticleId } from "../Utils/api";
+import { CommentsList } from "./CommentsList";
 
 export const SingleArticle = () => {
   const { article_id } = useParams();
 
   const [article, setArticle] = useState(null);
+  const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,6 +16,10 @@ export const SingleArticle = () => {
     getArticleById(article_id)
       .then(({ article }) => {
         setArticle(article);
+        return getCommentsByArticleId(article_id);
+      })
+      .then((comments) => {
+        setComments(comments);
         setLoading(false);
       })
       .catch((error) => {
@@ -36,6 +42,7 @@ export const SingleArticle = () => {
       <img src={article.article_img_url} alt={article.title} />
       <p>Topic: {article.topic}</p>
       <p>{article.body}</p>
+      <CommentsList comments={comments} />
     </div>
   );
 };
