@@ -25,12 +25,7 @@ export const getArticleById = (article_id) => {
 };
 
 export const getCommentsByArticleId = (article_id) => {
-  return api
-    .get(`/articles/${article_id}/comments`)
-    .then((res) => {
-      return res.data.comments;
-    })
-    .catch((err) => {
-      return err;
-    });
+  return api.get(`/articles/${article_id}/comments`).then((res) => {
+    return res.data.comments;
+  });
 };
