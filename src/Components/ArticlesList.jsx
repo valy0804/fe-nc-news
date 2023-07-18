@@ -2,18 +2,28 @@ import { useState, useEffect } from "react";
 import { getArticles } from "../Utils/api";
 import { ArticleCard } from "./ArticleCard";
 
+
 export const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     getArticles()
       .then(({ articles }) => {
         setArticles(articles);
+        setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error("Error fetching articles:", err);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
