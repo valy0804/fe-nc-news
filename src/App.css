@@ -49,8 +49,25 @@
   padding: 10px;
 }
 
-.comments-header {
-  
+.votes-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px;
+}
+
+.vote-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  background-color: #eee;
+  color: #333;
+  cursor: pointer;
+}
+
+.vote-count {
+  font-size: 18px;
+  font-weight: bold;
 }
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
