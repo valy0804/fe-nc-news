@@ -10,6 +10,44 @@
   padding: 20px;
 }
 
+.comments-list {
+  margin-top: 50px;
+  align-items: flex-start;
+}
+.list-header {
+  display: flex;
+  margin-left: 90px;
+}
+
+.comment-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.comment-card-body {
+  padding: 10px;
+}
+
+.comment-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-left: 15px;
+  background-color: #f8f9fa;
+}
+
+.comment-card-author {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.comment-card-date {
+  font-size: 12px;
+  padding: 10px;
+}
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
