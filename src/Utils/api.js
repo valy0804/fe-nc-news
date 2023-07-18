@@ -12,3 +12,14 @@ export const getArticles = () => {
       return err;
     });
 };
+
+export const getArticleById = (article_id) => {
+  return api
+    .get(`/articles/${article_id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

@@ -3,7 +3,7 @@ export const ArticleCard = (article) => {
   const formattedDate = new Date(created_at).toLocaleString();
 
   return (
-    <div>
+    <div className="article-card">
       <h3>{title}</h3>
       <img src={article_img_url} />
       <p>Date: {formattedDate}</p>

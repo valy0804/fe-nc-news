@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../Utils/api";
 import { ArticleCard } from "./ArticleCard";
-
+import { Link } from "react-router-dom";
 
 export const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
@@ -30,7 +30,9 @@ export const ArticlesList = () => {
       <h2>All Articles</h2>
       {articles.map((article) => (
         <div key={article.article_id}>
-          <ArticleCard article={article} />
+          <Link to={`/articles/${article.article_id}`}>
+            <ArticleCard article={article} />
+          </Link>
         </div>
       ))}
     </div>
