@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../Utils/api";
+import { CommentsList } from "./CommentsList";
 
 export const SingleArticle = () => {
   const { article_id } = useParams();
 
   const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(true);
+
+  const [loadingArticle, setLoadingArticle] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+    setLoadingArticle(true);
 
     getArticleById(article_id)
       .then(({ article }) => {
         setArticle(article);
-        setLoading(false);
+        setLoadingArticle(false);
       })
       .catch((error) => {
         console.error("Error fetching article:", error);
-        setLoading(false);
+        setLoadingArticle(false);
       });
   }, [article_id]);
 
-  if (loading) {
+  if (loadingArticle) {
     return <div>Loading...</div>;
   }
 
@@ -36,6 +38,7 @@ export const SingleArticle = () => {
       <img src={article.article_img_url} alt={article.title} />
       <p>Topic: {article.topic}</p>
       <p>{article.body}</p>
+      <CommentsList article_id={article_id} />
     </div>
   );
 };
