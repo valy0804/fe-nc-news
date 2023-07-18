@@ -5,9 +5,11 @@ import { CommentCard } from "./CommentCard";
 export const CommentsList = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
+    setError(null);
 
     getCommentsByArticleId(article_id)
       .then((comments) => {
@@ -15,13 +17,22 @@ export const CommentsList = ({ article_id }) => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching comments:", error);
+        console.log(error);
+        setError("Error fetching comments. Please try again.");
         setLoading(false);
       });
   }, [article_id]);
 
   if (loading) {
     return <div>Loading comments...</div>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (comments.length === 0) {
+    return <p>No comments yet.</p>;
   }
 
   return (
