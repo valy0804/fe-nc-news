@@ -11,7 +11,7 @@ export const Votes = ({ article_id, initialVotes }) => {
       setVotes((prevVotes) => prevVotes + 1);
       patchArticleById(article_id, 1)
         .then((res) => {
-          console.log(res);
+          return res;
         })
         .catch((error) => {
           console.error(error);
@@ -28,7 +28,7 @@ export const Votes = ({ article_id, initialVotes }) => {
       setVotes((prevVotes) => prevVotes - 1);
       patchArticleById(article_id, -1)
         .then((res) => {
-          console.log(res);
+          return res;
         })
         .catch((error) => {
           console.error(error);
