@@ -36,7 +36,7 @@ export const SingleArticle = () => {
       <h2>{article.title}</h2>
       <p>Author: {article.author}</p>
       <p>Date: {formattedDate}</p>
-      <Votes />
+      <Votes initialVotes={article.votes} article_id={article.article_id} />
       <img src={article.article_img_url} alt={article.title} />
       <p>Topic: {article.topic}</p>
       <p>{article.body}</p>
