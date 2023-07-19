@@ -29,3 +29,19 @@ export const getCommentsByArticleId = (article_id) => {
     return res.data.comments;
   });
 };
+
+const ncNewsApi = axios.create({
+  baseURL: "https://nc-news-ddgf.onrender.com/api",
+});
+
+export const patchArticleById = (article_id, inc_votes) => {
+  const articlePatchBody = {
+    article_id,
+    inc_votes,
+  };
+  return ncNewsApi
+    .patch(`/articles/${article_id}`, articlePatchBody)
+    .then((res) => {
+      return res;
+    });
+};
