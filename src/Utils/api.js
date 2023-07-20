@@ -45,3 +45,23 @@ export const patchArticleById = (article_id, inc_votes) => {
       return res;
     });
 };
+
+const addCommentApi = axios.create({
+  baseURL: "http://localhost:9090/api",
+});
+
+export const postComment = (article_id, newComment) => {
+  const postReqBody = {
+    username: "butter_bridge",
+    body: newComment,
+  };
+
+  return addCommentApi
+    .post(`/articles/${article_id}/comments`, postReqBody)
+    .then(({ data }) => {
+      return data.comment;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
