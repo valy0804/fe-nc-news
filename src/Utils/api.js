@@ -68,16 +68,11 @@ export const getTopics = () => {
 };
 
 export const getArticlesByTopic = (topic) => {
-  const apiUrl = "https://nc-news-ddgf.onrender.com/api/articles";
-  return axios
-    .get(apiUrl, {
+  return api
+    .get(`/articles?q=${topic}`, {
       params: {
         topic: topic,
       },
-    })
-    .then((res) => {
-      console.log(res.data);
-      return res.data;
     })
     .catch((err) => {
       return err;

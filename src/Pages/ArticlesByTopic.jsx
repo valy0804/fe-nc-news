@@ -9,8 +9,11 @@ export const ArticleByTopic = () => {
   const { topicSlug } = useParams();
 
   useEffect(() => {
-    getArticlesByTopic(topicSlug).then((articles) => {
-      setArticles(articles);
+    getArticlesByTopic().then((articles) => {
+      const articlesByTopic = articles.filter(
+        (article) => article.topic === topicSlug
+      );
+      setArticles(articlesByTopic);
     });
   }, [topicSlug]);
 
