@@ -7,10 +7,19 @@ export function CommentAdder({ setComments }) {
   const [newComment, setNewComment] = useState("");
   const [loading, setLoading] = useState(false);
   const [feedBackMessage, setFeedBackMessage] = useState("");
+  const [error, setError] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (newComment.trim() === "") {
+      setError("Please enter a comment before submitting.");
+      return;
+    }
+
     setLoading(true);
+    setError("");
+
     postComment(article_id, newComment)
       .then((postedComment) => {
         setComments((currComments) => {
@@ -21,14 +30,16 @@ export function CommentAdder({ setComments }) {
         setNewComment("");
       })
       .catch((error) => {
-        console.log(error);
-        setFeedBackMessage(error);
+        console.error(error);
+        setFeedBackMessage("");
+        setError("Failed to post the comment. Please try again later.");
+        setLoading(false);
       });
   }
-
   return (
     <div className="comment-adder-wrapper">
       {feedBackMessage && <p>{feedBackMessage}</p>}
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit} className="comment-adder-form">
         <input
           type="text"
@@ -41,7 +52,7 @@ export function CommentAdder({ setComments }) {
         <button
           type="submit"
           className="comment-adder-button"
-          disabled={loading}
+          disabled={loading || newComment === ""}
         >
           {loading ? "Posting..." : "Post comment"}
         </button>
