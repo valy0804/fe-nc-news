@@ -30,7 +30,6 @@ export function CommentAdder({ setComments }) {
         setNewComment("");
       })
       .catch((error) => {
-        console.error(error);
         setFeedBackMessage("");
         setError("Failed to post the comment. Please try again later.");
         setLoading(false);
@@ -41,8 +40,8 @@ export function CommentAdder({ setComments }) {
       {feedBackMessage && <p>{feedBackMessage}</p>}
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit} className="comment-adder-form">
-        <input
-          type="text"
+        <textarea
+          rows={2}
           id="new-comment"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
