@@ -69,6 +69,43 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+.comment-adder-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.comment-adder-form {
+  display: flex;
+  align-items: center;
+}
+
+.comment-adder-input {
+  flex: 1;
+  padding: 3px;
+  margin-right: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+.comment-adder-button {
+  padding: 8px 16px;
+  height: 44px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.comment-adder-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #333;
+}
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;

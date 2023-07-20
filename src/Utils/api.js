@@ -30,18 +30,28 @@ export const getCommentsByArticleId = (article_id) => {
   });
 };
 
-const ncNewsApi = axios.create({
-  baseURL: "https://nc-news-ddgf.onrender.com/api",
-});
-
 export const patchArticleById = (article_id, inc_votes) => {
   const articlePatchBody = {
     article_id,
     inc_votes,
   };
-  return ncNewsApi
-    .patch(`/articles/${article_id}`, articlePatchBody)
-    .then((res) => {
-      return res;
+  return api.patch(`/articles/${article_id}`, articlePatchBody).then((res) => {
+    return res;
+  });
+};
+
+export const postComment = (article_id, newComment) => {
+  const postReqBody = {
+    username: "tickle122",
+    body: newComment,
+  };
+
+  return api
+    .post(`/articles/${article_id}/comments`, postReqBody)
+    .then(({ data }) => {
+      return data.comment;
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
