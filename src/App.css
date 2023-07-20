@@ -105,6 +105,10 @@
   background-color: #ccc;
   cursor: not-allowed;
   color: #333;
+.topics-button {
+  background-color: #eee;
+  color: #333;
+  margin: 20px;
 }
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {

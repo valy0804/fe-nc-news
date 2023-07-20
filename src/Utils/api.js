@@ -55,3 +55,31 @@ export const postComment = (article_id, newComment) => {
       console.log(error);
     });
 };
+
+export const getTopics = () => {
+  return api
+    .get("/topics")
+    .then((res) => {
+      return res.data.topics;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getArticlesByTopic = (topic) => {
+  const apiUrl = "https://nc-news-ddgf.onrender.com/api/articles";
+  return axios
+    .get(apiUrl, {
+      params: {
+        topic: topic,
+      },
+    })
+    .then((res) => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
