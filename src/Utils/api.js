@@ -67,12 +67,11 @@ export const getTopics = () => {
     });
 };
 
-export const getArticlesByTopic = (topic) => {
+export const getArticlesByTopic = (topicSlug) => {
   return api
-    .get(`/articles?q=${topic}`, {
-      params: {
-        topic: topic,
-      },
+    .get(`/articles?${topicSlug}`)
+    .then((res) => {
+      return res.data.articles;
     })
     .catch((err) => {
       return err;
