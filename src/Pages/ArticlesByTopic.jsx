@@ -8,8 +8,6 @@ export const ArticlesByTopic = () => {
   const [loading, setLoading] = useState(false);
   const { topicSlug } = useParams();
 
-  console.log(topicSlug);
-
   useEffect(() => {
     setLoading(true);
     getArticlesByTopic(topicSlug).then((articles) => {
