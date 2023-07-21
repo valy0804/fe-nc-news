@@ -61,14 +61,6 @@ export const ArticlesList = () => {
         Sort by Date
         {sortByQuery === "created_at" && sortOrder === "desc" ? "▼" : "▲"}
       </button>
-
-      {/* <button
-        onClick={() => updateSorting("comment_count")}
-        className="sort-button"
-      >
-        Sort by Comments
-        {sortByQuery === "comment_count" && sortOrder === "desc" ? "▼" : "▲"}
-      </button> */}
       <button onClick={() => updateSorting("votes")} className="sort-button">
         Sort by Votes{" "}
         {sortByQuery === "votes" && sortOrder === "desc" ? "▼" : "▲"}
