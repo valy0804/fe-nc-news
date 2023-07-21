@@ -29,6 +29,9 @@ export const SingleArticle = () => {
     return <div>Loading...</div>;
   }
 
+  if (!article) {
+    return <p>Article not found.</p>;
+  }
   const formattedDate = new Date(article.created_at).toLocaleString();
 
   return (

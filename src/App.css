@@ -106,6 +106,27 @@
   cursor: not-allowed;
   color: #333;
 }
+.topics-button {
+  background-color: #eee;
+  color: #333;
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.topics-button:hover {
+  background-color: #ccc;
+}
+
+.topic-header {
+  background-color: #646cff;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+}
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;

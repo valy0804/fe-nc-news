@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getArticles } from "../Utils/api";
 import { ArticleCard } from "./ArticleCard";
 import { Link } from "react-router-dom";
+import { Topics } from "./Topics";
 
 export const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
@@ -16,7 +17,7 @@ export const ArticlesList = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching articles:", err);
+        console.log(err);
         setLoading(false);
       });
   }, []);
@@ -28,6 +29,7 @@ export const ArticlesList = () => {
   return (
     <div>
       <h2>All Articles</h2>
+      <Topics />
       {articles.map((article) => (
         <div key={article.article_id}>
           <Link to={`/articles/${article.article_id}`}>

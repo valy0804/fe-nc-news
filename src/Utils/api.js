@@ -55,3 +55,25 @@ export const postComment = (article_id, newComment) => {
       console.log(error);
     });
 };
+
+export const getTopics = () => {
+  return api
+    .get("/topics")
+    .then((res) => {
+      return res.data.topics;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getArticlesByTopic = (topicSlug) => {
+  return api
+    .get(`/articles?${topicSlug}`)
+    .then((res) => {
+      return res.data.articles;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
