@@ -17,7 +17,7 @@ export const ArticlesList = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching articles:", err);
+        console.log(err);
         setLoading(false);
       });
   }, []);
