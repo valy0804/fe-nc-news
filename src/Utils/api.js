@@ -2,11 +2,11 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://nc-news-ddgf.onrender.com/api" });
 
-export const getArticles = () => {
+export const getArticles = (params) => {
   return api
-    .get("/articles")
+    .get("/articles", { params })
     .then((res) => {
-      return res.data;
+      return res.data.articles;
     })
     .catch((err) => {
       return err;
